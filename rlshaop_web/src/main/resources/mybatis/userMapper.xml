@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.rlshop.mapper.UserMapper">
+	<!--namespace 应该与mapper接口保持一致  -->
+	
+	<select id="login" resultType="User" parameterType="User">
+	   select * from user where username=#{userName}  and password =#{passWord}
+	</select>
+	
+	<insert id="saveUser" parameterType="User">
+		insert into user(USERID,USERNAME,password,NAME,PHONE,EMAIL,ADDRESS)
+		 values(#{userId},#{userName},#{passWord},#{name},#{phone},#{email},#{address})
+	</insert>
+	
+	<update id="updateUser" parameterType="User">
+		update user set password = #{passWord},name = #{name},phone = #{phone},email = #{email},address = #{address}
+		where userid = #{userId}
+	</update>
+	
+	<select id="findUserByUP" parameterType="User" resultType="User">
+		select * from user where username = #{userName} and password = #{passWord}
+	</select>
+	
+	
+</mapper>

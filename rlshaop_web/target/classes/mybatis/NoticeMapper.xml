@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.rlshop.mapper.NoticeMapper">
+	<!--namespace 应该与mapper接口保持一致  -->
+	<select id="findNoticeList" resultType="Notice">
+		select noticeId,noticeTitle from notice
+	</select>
+	
+	<select id="findNoticeById" resultType="Notice">
+		select *  from notice where noticeId = #{noticeId}
+	</select>
+	
+	<insert id="saveNotice">
+		insert into notice(noticeId,noticeTitle,noticeContent) 
+		values(#{noticeId},#{noticeTitle},#{noticeContent})
+	</insert>
+	
+	<update id="updateNotice">
+		update notice set noticeTitle=#{noticeTitle},noticeContent=#{noticeContent}
+		 where noticeId=#{noticeId}
+	</update>
+	
+	<delete id="delNoticeById">
+		delete from notice where noticeId = #{noticeId}
+	</delete>
+</mapper>

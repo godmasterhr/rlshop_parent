@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.rlshop.mapper.ItemListMapper">
+	<!--namespace 应该与mapper接口保持一致  -->
+	<select id="findItemList" resultType="Item">
+
+		SELECT * from item where itemtype = #{type} 
+
+	</select>
+	
+	<select id="search" resultType="Item">
+
+		SELECT * from item where title like  "%"#{key}"%"  limit #{page},#{rows} 
+
+	</select>
+
+	
+	
+</mapper>
