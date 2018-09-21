@@ -5,6 +5,7 @@ package cn.rlshop.config;
 import com.github.pagehelper.PageHelper;
 import org.apache.ibatis.plugin.Interceptor;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.boot.autoconfigure.SpringBootVFS;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,6 +37,8 @@ public class MyBatisConfig {
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         //设置扫描xml文件
         sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:mybatis/*.xml"));
+        //指定VFS确保可以扫描到实体类
+        sqlSessionFactoryBean.setVfs(SpringBootVFS.class);
 
         return sqlSessionFactoryBean;
     }

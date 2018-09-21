@@ -68,7 +68,7 @@ public class UserController {
 		}
 		else {
 			model.addAttribute("error","用户名或密码错误");
-			return "/login";
+			return "login";
 		}
 	}
 	
